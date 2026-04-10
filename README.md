@@ -23,7 +23,8 @@ This repository provides ready-to-use Python samples demonstrating how to intera
 
 1. **Clone this repository:**
    ```bash
-   git clone https://github.com/guygregory/ModelRouter.git
+   git clone
+https://github.com/Anik-G/ModelRouter.git
    cd ModelRouter
    ```
 
@@ -41,7 +42,7 @@ This repository provides ready-to-use Python samples demonstrating how to intera
 
    For example:
    ```bash
-   python model-router-gradio.py
+   python3 model-router-gradio.py
    ```
 
 5. **Review and adapt:**
