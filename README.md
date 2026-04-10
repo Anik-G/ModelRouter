@@ -36,6 +36,22 @@ This repository provides ready-to-use Python samples demonstrating how to intera
 3. **Configure your Azure credentials:**
    - Set the `AZURE_OPENAI_API_KEY` and `AZURE_OPENAI_API_ENDPOINT` environment variables as described in the [Azure OpenAI documentation](https://learn.microsoft.com/en-us/azure/ai-services/openai/quickstart?tabs=python).
 
+   - update below environ variables to .env file to the root directory./ModelRouter . Code will use load_dotenv() to load .env file.
+
+```bash
+import os
+from openai import AzureOpenAI
+from dotenv import load_dotenv
+
+load_dotenv()
+
+endpoint = os.environ["AZURE_OPENAI_API_ENDPOINT"]
+deployment = os.environ["AZURE_OPENAI_API_MODEL"]
+subscription_key = os.environ["AZURE_OPENAI_API_KEY"]
+api_version = os.environ["AZURE_OPENAI_API_VERSION"]
+```
+
+
 4. **Run a sample:**
    - Review the individual Python scripts in this repo, and use whichever is the best fit for your need:
   
