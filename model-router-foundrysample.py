@@ -15,28 +15,41 @@ client = AzureOpenAI(
     api_key=subscription_key,
 )
 
-response = client.chat.completions.create(
-    stream=True,
-    messages=[
-        {
-            "role": "system",
-            "content": "You are a helpful assistant.",
-        },
-        {
-            "role": "user",
-            "content": "Write a comprehensive account of solo backpacking adventure through South America, covering countries like Colombia, Peru, Bolivia, and Argentina. Detail the challenges and triumphs of traveling solo, your interactions with locals, and the cultural diversity you encountered along the way. Include must-visit attractions, unique experiences like hiking the Inca Trail or exploring Patagonia, and recommendations for budget travelers. Provide a structured itinerary, a cost breakdown, and safety tips for solo adventurers in the region.",
-        }
-    ],
-    max_tokens=8192,
-    temperature=0.7,
-    top_p=0.95,
-    frequency_penalty=0.0,
-    presence_penalty=0.0,
-    model=deployment,
-)
+user_messages = [
+    "Capital of West Bengal?",
+    #"Evaluate the definite integral from 0 to infinity of (ln x)^2 / (1 + x^2) dx and provide the step-by-step derivation.",
+    "Implement a lock-free queue in Rust.",
+    "2*409237252425267829083018031801380913013813-99",
+]
 
-for update in response:
-    if update.choices:
-        print(update.choices[0].delta.content or "", end="")
-        model_router_model=update.model
+for user_content in user_messages:
+    response = client.chat.completions.create(
+        stream=True,
+        messages=[
+            {
+                "role": "system",
+                "content": "You are a helpful assistant.",
+            },
+            {
+                "role": "user",
+                "content": user_content,
+            }
+        ],
+        max_tokens=9000,
+        # temperature=0.7,
+        # top_p=0.95,
+        # frequency_penalty=0.0,
+        # presence_penalty=0.0,
+        model=deployment,
+    )
+
+    model_router_model = None
+    for update in response:
+        if update.choices:
+            print(update.choices[0].delta.content or "", end="")
+            if update.model:
+                model_router_model = update.model
+
+    print(f"\nmodel used by Model Router: {model_router_model}\n")
+
 client.close()

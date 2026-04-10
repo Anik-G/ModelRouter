@@ -1,0 +1,5 @@
+# Don't check in credentials
+*.env
+*.venv
+.env
+.venv
