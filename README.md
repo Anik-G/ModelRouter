@@ -23,8 +23,7 @@ This repository provides ready-to-use Python samples demonstrating how to intera
 
 1. **Clone this repository:**
    ```bash
-   git clone
-https://github.com/Anik-G/ModelRouter.git
+   git clone https://github.com/Anik-G/ModelRouter.git
    cd ModelRouter
    ```
 
@@ -39,12 +38,20 @@ https://github.com/Anik-G/ModelRouter.git
 
 4. **Run a sample:**
    - Review the individual Python scripts in this repo, and use whichever is the best fit for your need:
+  
+   - Sample code test
 
    For example:
    ```bash
-   python3 model-router-gradio.py
+   python3 model-router-foundrysample.py
    ```
 
+   - Gradio App for Model Router from Any host 
+   
+   With Gradio Python WebApp : For example:
+   ```bash
+   python3 model-router-gradio.py
+   ```
 5. **Review and adapt:**
    - Modify the samples to fit your use case and deployment.
 
