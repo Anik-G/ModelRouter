@@ -17,9 +17,11 @@ client = AzureOpenAI(
 
 user_messages = [
     "Capital of West Bengal?",
-    #"Evaluate the definite integral from 0 to infinity of (ln x)^2 / (1 + x^2) dx and provide the step-by-step derivation.",
     "Implement a lock-free queue in Rust.",
+    #"Use a embedding model and convert cat into its vector equivalent",
+    #"Solve the differential equation dy/dx + 2xy = x, given y(0) = 0. Provide the solution in terms of the error function if necessary.",
     "2*409237252425267829083018031801380913013813-99",
+    ""
 ]
 
 for user_content in user_messages:
@@ -35,7 +37,7 @@ for user_content in user_messages:
                 "content": user_content,
             }
         ],
-        max_tokens=9000,
+        max_tokens=10000,
         # temperature=0.7,
         # top_p=0.95,
         # frequency_penalty=0.0,

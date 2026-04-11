@@ -1,6 +1,7 @@
 # Model Router for Azure OpenAI
 ![ModelRouter](https://github.com/user-attachments/assets/149f9204-68b6-4795-8992-09d3f0488a39)
 
+
 ## Overview
 
 The Model Router feature within Azure OpenAI is a deployable model trained to select the best large language model (LLM) to respond to a given prompt in real time. By assessing factors such as prompt complexity, cost, and performance, Model Router dynamically routes requests to the most suitable underlying model. This approach helps you optimize both cost and quality: smaller, more efficient models are used when possible, while larger, more capable models are chosen when needed.
@@ -25,6 +26,13 @@ This repository provides ready-to-use Python samples demonstrating how to intera
    ```bash
    git clone https://github.com/Anik-G/ModelRouter.git
    cd ModelRouter
+   ```
+
+1.1. **Optional Pre requisits:**
+   ```bash
+   python3 --version
+   python3 -m venv .venv
+   source .venv/bin/activate
    ```
 
 2. **Install dependencies:**
@@ -59,17 +67,17 @@ api_version = os.environ["AZURE_OPENAI_API_VERSION"]
 
    For example:
    ```bash
-   python3 model-router-foundrysample.py
+   python3 model-router-foundry-sample.py
    ```
 
    - Gradio App for Model Router from Any host 
    
    With Gradio Python WebApp : For example:
    ```bash
-   python3 model-router-gradio.py
+   python3 model-router-gradio-app.py
    ```
 5. **Review and adapt:**
-   - Modify the samples to fit your use case and deployment.
+   - Modify the samples (user_messages) to fit your use case and deployment.
 
 ---
 
