@@ -18,6 +18,39 @@ client = AzureOpenAI(
     api_key=subscription_key,
 )
 
+# Standard model detection helpers
+STANDARD_MODEL_PREFIXES = [
+    "gpt-",
+    "o4",
+    "claude-",
+    "grok-",
+    "llama-",
+    "deeps",
+    "gpt-oss",
+]
+
+def model_is_standard(model_name):
+    if not model_name:
+        return False
+    normalized = model_name.strip().lower()
+    return any(normalized.startswith(prefix) for prefix in STANDARD_MODEL_PREFIXES)
+
+
+def format_model_name(model_name):
+    if not model_name:
+        return "model-router"
+    if model_name.lower() == "model-router":
+        return "model-router"
+    if model_is_standard(model_name):
+        return f"Standard: {model_name}"
+    return model_name
+
+
+def format_model_type(model_name):
+    if model_is_standard(model_name):
+        return "Data Zone Standard"
+    return "Global"
+
 # Function to handle chat responses with streaming
 def respond(user_message):
     # prepare single-turn exchange
@@ -30,7 +63,7 @@ def respond(user_message):
     ]
 
     # initial: clear input & disable buttons
-    yield history, "", "", gr.update(value=""), gr.update(interactive=False), gr.update(interactive=False)
+    yield history, "model-router", "Global", "", gr.update(value=""), gr.update(interactive=False), gr.update(interactive=False)
 
     response = client.chat.completions.create(
         model=deployment,
@@ -56,9 +89,11 @@ def respond(user_message):
             continue
         model_router_model = getattr(chunk, "model", None) or getattr(chunk, "model_name", None) or model_router_model
         assistant_entry["content"] += chunk.choices[0].delta.content or ""
+        display_model = format_model_name(model_router_model)
+        display_type = format_model_type(model_router_model)
 
         # stream back updated assistant response
-        yield history, model_router_model, "", gr.update(value=""), gr.update(interactive=False), gr.update(interactive=False)
+        yield history, display_model, display_type, "", gr.update(value=""), gr.update(interactive=False), gr.update(interactive=False)
 
     if usage is None:
         usage = getattr(response, "usage", None)
@@ -109,13 +144,16 @@ def respond(user_message):
     else:
         usage_info = "Usage data not available for this request."
 
+    display_model = format_model_name(model_router_model)
+    display_type = format_model_type(model_router_model)
+
     # done streaming: re-enable buttons (input stays cleared)
-    yield history, model_router_model, usage_info, gr.update(value=""), gr.update(interactive=True), gr.update(interactive=True)
+    yield history, display_model, display_type, usage_info, gr.update(value=""), gr.update(interactive=True), gr.update(interactive=True)
 
 # Function to clear chat and model info
 def clear_history():
-    # clear chat, model_info, usage_info, input; re-enable buttons
-    return [], "model-router", "", "", gr.update(interactive=True), gr.update(interactive=True)  # Clear chatbot, model_info, usage_info, and input textbox
+    # clear chat, model_info, standard_info, usage_info, input; re-enable buttons
+    return [], "model-router", "Global", "", "", gr.update(interactive=True), gr.update(interactive=True)
 
 # Build Gradio interface
 with gr.Blocks(css="""
@@ -446,13 +484,21 @@ with gr.Blocks(css="""
         with gr.Column(scale=1):
             with gr.Group(elem_classes="sidebar-card"):
                 gr.HTML('<h2>Model Info</h2>')
-                with gr.Group(elem_classes="model-info-container"):
-                    model_info = gr.Textbox(
-                        label="🔹 Model used:",
-                        interactive=False,
-                        value="model-router",
-                        elem_id="model_info"
-                    )
+                with gr.Row():
+                    with gr.Column():
+                        standard_info = gr.Textbox(
+                            label="🔸 Model type:",
+                            interactive=False,
+                            value="Global",
+                            elem_id="model_type"
+                        )
+                    with gr.Column():
+                        model_info = gr.Textbox(
+                            label="🔹 Model used:",
+                            interactive=False,
+                            value="model-router",
+                            elem_id="model_info"
+                        )
                 with gr.Group(elem_classes="usage-info-container"):
                     usage_info = gr.Textbox(
                         label="📊 Request stats",
@@ -465,21 +511,21 @@ with gr.Blocks(css="""
                 gr.HTML('<p class="footer-note">Developer: <a href="https://www.linkedin.com/in/anik-guha/" target="_blank">Anik Guha</a></p>')
     gr.HTML('</div>')
 
-    # Now outputs is a list: [chatbot, model_info, usage_info]
+    # Now outputs is a list: [chatbot, model_info, standard_info, usage_info]
     submit_btn.click(
         fn=respond,
         inputs=[txt],
-        outputs=[chatbot, model_info, usage_info, txt, submit_btn, clear_btn],
+        outputs=[chatbot, model_info, standard_info, usage_info, txt, submit_btn, clear_btn],
     )
     txt.submit(
         fn=respond,
         inputs=[txt],
-        outputs=[chatbot, model_info, usage_info, txt, submit_btn, clear_btn],
+        outputs=[chatbot, model_info, standard_info, usage_info, txt, submit_btn, clear_btn],
     )
     clear_btn.click(
         fn=clear_history,
         inputs=None,
-        outputs=[chatbot, model_info, usage_info, txt, submit_btn, clear_btn],
+        outputs=[chatbot, model_info, standard_info, usage_info, txt, submit_btn, clear_btn],
     )
 
 if __name__ == "__main__":
