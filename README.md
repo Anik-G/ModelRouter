@@ -104,6 +104,9 @@ client = AzureOpenAI(
 python3 model-router-foundry-sample.py
 ```
 
+<img width="1047" height="775" alt="Screenshot 2026-04-11 111202" src="https://github.com/user-attachments/assets/fa6f74f3-1b72-43f4-8f0e-715d5706ee10" />
+
+
 ### 7. Launch the Gradio app
 
 ```bash
