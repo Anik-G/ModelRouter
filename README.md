@@ -5,7 +5,6 @@
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)](https://www.python.org/)
 [![Gradio](https://img.shields.io/badge/Gradio-UI%20App-purple?logo=gradio)](https://gradio.app/)
 [![Azure OpenAI](https://img.shields.io/badge/Azure%20OpenAI-Model%20Router-blueviolet?logo=microsoftazure)](https://aka.ms/ModelRouter)
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Roboto+Mono&size=26&pause=1000&color=2A9DFF&width=780&lines=Azure+Model+Router+Demo;Live+Gradio+Frontend;Intelligent+Model+Selection)
 
