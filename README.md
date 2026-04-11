@@ -47,6 +47,8 @@ This repository provides ready-to-use Python samples demonstrating how to intera
    - Set the `AZURE_OPENAI_API_KEY` and `AZURE_OPENAI_API_ENDPOINT` environment variables as described in the [Azure OpenAI documentation](https://learn.microsoft.com/en-us/azure/ai-services/openai/quickstart?tabs=python).
 
    - update below environ variables to .env file to the root directory./ModelRouter . Code will use load_dotenv() to load .env file.
+   <img width="767" height="125" alt="image" src="https://github.com/user-attachments/assets/18bb24b2-2262-4305-a21f-2d96566bea88" />
+
 
 ```bash
 import os
