@@ -135,6 +135,3 @@ python3 model-router-gradio-app.py
 
 ---
 
-## License
-
-MIT License
