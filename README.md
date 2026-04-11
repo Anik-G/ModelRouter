@@ -1,6 +1,8 @@
 # Model Router for Azure OpenAI
 ![ModelRouter](https://github.com/user-attachments/assets/149f9204-68b6-4795-8992-09d3f0488a39)
 
+![ModelRouter](https://github.com/Anik-G/ModelRouter/blob/main/ss/IMG-20260411-WA0001.jpg)
+![ModelRouter](https://github.com/Anik-G/ModelRouter/blob/main/ss/IMG-20260411-WA0000.jpg)
 
 ## Overview
 
@@ -84,4 +86,5 @@ api_version = os.environ["AZURE_OPENAI_API_VERSION"]
 ## Useful Links
 
 - [Model Router Documentation (Microsoft Learn)](https://aka.ms/ModelRouter)
-- [Microsoft Build - Optimize your GenAI applications at scale in Azure AI Foundry](https://build.microsoft.com/en-US/sessions/BRK178)
+- [Supported Models](https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-router#supported-underlying-models)
+- [Microsoft - Optimize your GenAI applications at scale in Azure AI Foundry](https://azure.microsoft.com/en-us/blog/the-latest-azure-ai-foundry-innovations-help-you-optimize-ai-investments-and-differentiate-your-business/)
