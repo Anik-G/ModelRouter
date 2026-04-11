@@ -74,12 +74,18 @@ api_version = os.environ["AZURE_OPENAI_API_VERSION"]
    python3 model-router-foundry-sample.py
    ```
 
+<img width="1047" height="775" alt="image" src="https://github.com/user-attachments/assets/388b5330-260a-4094-95f6-8544fff268eb" />
+
+
    - Gradio App for Model Router from Any host 
    
    With Gradio Python WebApp : For example:
    ```bash
    python3 model-router-gradio-app.py
    ```
+<img width="1124" height="549" alt="Screenshot 2026-04-11 104848" src="https://github.com/user-attachments/assets/dad7fbec-4033-4307-b14f-3a11b93a3d87" />
+
+   
 5. **Review and adapt:**
    - Modify the samples (user_messages) to fit your use case and deployment.
 
