@@ -134,4 +134,6 @@ python3 model-router-gradio-app.py
 - [Azure AI Foundry Blog](https://azure.microsoft.com/en-us/blog/the-latest-azure-ai-foundry-innovations-help-you-optimize-ai-investments-and-differentiate-your-business/)
 
 ---
+## Youtube Demo
 
+https://youtu.be/CVlFLSL5WPg
