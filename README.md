@@ -135,5 +135,5 @@ python3 model-router-gradio-app.py
 
 ---
 ## Youtube Demo
-
+[![YouTube](https://img.shields.io/badge/YouTube-Demo-red?logo=youtube)](https://youtu.be/CVlFLSL5WPg)
 https://youtu.be/CVlFLSL5WPg
