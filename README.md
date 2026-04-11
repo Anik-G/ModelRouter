@@ -1,4 +1,4 @@
-# Model Router for Azure OpenAI
+# Model Router for Azure OpenAI with Python
 ![ModelRouter](https://github.com/user-attachments/assets/149f9204-68b6-4795-8992-09d3f0488a39)
 
 
