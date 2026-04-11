@@ -21,7 +21,6 @@ user_messages = [
     #"Use a embedding model and convert cat into its vector equivalent",
     #"Solve the differential equation dy/dx + 2xy = x, given y(0) = 0. Provide the solution in terms of the error function if necessary.",
     "2*409237252425267829083018031801380913013813-99",
-    ""
 ]
 
 for user_content in user_messages:
