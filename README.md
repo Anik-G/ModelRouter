@@ -1,7 +1,7 @@
 # Model Router for Azure OpenAI
 ![ModelRouter](https://github.com/user-attachments/assets/149f9204-68b6-4795-8992-09d3f0488a39)
 
-![ModelRouter](https://github.com/Anik-G/ModelRouter/blob/main/ss/IMG-20260411-WA0001.jpg)
+
 ![ModelRouter](https://github.com/Anik-G/ModelRouter/blob/main/ss/query.gif)
 
 ## Overview
