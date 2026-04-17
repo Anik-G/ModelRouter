@@ -110,7 +110,11 @@ python3 model-router-foundry-sample.py
 
 ```bash
 python3 model-router-gradio-app.py
+#nohup python3 model-router-gradio-app.py > router_app.log 2>&1 &      #Puts the process in the background
+#tail -f router_app.log                                                #Monitor the logs in real-time
+#kill [PID_NUMBER]                                                     #Stop the app
 ```
+
 
 ![Model Router UI](https://github.com/Anik-G/ModelRouter/blob/main/ss/query.gif)
 
